@@ -1,14 +1,31 @@
 # error_notifier_for_provider
 
 A trick to notify errors in ChangeNotifier/ValueNotifier/StateNotifier.
+No more `GlobalKey<Scaffold>`!
 
-## Getting Started
+```dart
+Provider(
+  create (_) => YourObjectWithErrorNotifierMixin(),
+  child: Scaffold(
+    body: ErrorListener(
+      onNotify: (context, message) => Scaffold.of(context).showSnackbar(
+        Snackbar(content: Text(message))
+      )
+      child: YourContent(),
+    ),
+  ),
+);
+```
 
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
+## Pros
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+* Easy to use
+* You can use it with ChangeNotifier/ValueNotifier/StateNotifier and any other provided objects.
+
+
+## Motivation
+
+ChangeNotifier/ValueNotifier/StateNotifier can notify and reflect its state to other object.
+But it's for UI, not the one shot notification like an error notification.
+
+`error_notifier_for_provider` provides another path to notify something.
