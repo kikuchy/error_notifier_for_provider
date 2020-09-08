@@ -1,8 +1,7 @@
 name: error_notifier_for_provider
 description: A trick to notify errors in ChangeNotifier/ValueNotifier/StateNotifier.
 version: 0.0.1
-author:
-homepage:
+homepage: https://github.com/kikuchy/error_notifier_for_provider
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
@@ -11,7 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  provider: ^4.3.2+1
+  provider: ^4.3.2+2
 
 dev_dependencies:
   flutter_test:
