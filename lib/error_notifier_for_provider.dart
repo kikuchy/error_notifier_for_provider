@@ -40,7 +40,8 @@ class ErrorListener<T extends ErrorNotifierMixin> extends StatefulWidget {
   /// A widget to show under this widget.
   final Widget child;
 
-  /// A fu
+  /// A function catches notified errors.
+  /// You can use it for showing error messages for users.
   final void Function(BuildContext context, String message) onNotify;
 
   @override
