@@ -30,12 +30,10 @@ typedef ErrorListeningCanceler = void Function();
 /// A widget to use broadcasted errors.
 class ErrorListener<T extends ErrorNotifierMixin> extends StatefulWidget {
   const ErrorListener({
-    @required this.child,
-    @required this.onNotify,
-    Key key,
-  })  : assert(child != null),
-        assert(onNotify != null),
-        super(key: key);
+    required this.child,
+    required this.onNotify,
+    Key? key,
+  }) : super(key: key);
 
   /// A widget to show under this widget.
   final Widget child;
@@ -50,7 +48,7 @@ class ErrorListener<T extends ErrorNotifierMixin> extends StatefulWidget {
 
 class _ErrorListenerState<T extends ErrorNotifierMixin>
     extends State<ErrorListener> {
-  ErrorListeningCanceler _cancel;
+  ErrorListeningCanceler? _cancel;
 
   @override
   void initState() {
@@ -67,7 +65,6 @@ class _ErrorListenerState<T extends ErrorNotifierMixin>
   void _listen() {
     _cancel?.call();
     final notifier = Provider.of<T>(context, listen: false);
-    assert(notifier != null);
     _cancel = notifier.addErrorListener(_onNotify);
   }
 
